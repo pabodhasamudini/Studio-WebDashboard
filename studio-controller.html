@@ -923,7 +923,7 @@ function motor(id, dir) {
   if (dir==='up') { url='/m'+id+'up'; stateEl.textContent='Moving Up'; stateEl.className='motorState active'; }
   else if (dir==='down') { url='/m'+id+'dn'; stateEl.textContent='Moving Down'; stateEl.className='motorState active'; }
   else { url='/m'+id+'st'; stateEl.textContent='Stopped'; stateEl.className='motorState'; }
-  fetch(getBaseUrl()+url).catch(()=>{});
+  fetch(getBaseUrl()+url, { method: 'GET', mode: 'no-cors' }).catch(()=>{});
 }
 document.getElementById('stopAllMotorsBtn').addEventListener('click', function(){
   [1,2,3].forEach(id=>motor(id,'stop'));
